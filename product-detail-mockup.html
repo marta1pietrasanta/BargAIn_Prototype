@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail Page - Mockup</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: #f5f5f5;
+        }
+
+        /* Amazon-style Header */
+        .header {
+            background: #131921;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+        }
+
+        /* Product Container */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .product-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        /* Product Image */
+        .product-image-section {
+            text-align: center;
+        }
+
+        .product-image {
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        /* Product Info */
+        .product-info-section h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #0F1111;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: #007185;
+        }
+
+        .stars {
+            color: #FFA41C;
+        }
+
+        .price-section {
+            margin: 20px 0;
+            padding: 20px 0;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .price {
+            font-size: 28px;
+            color: #B12704;
+            font-weight: 500;
+        }
+
+        .price-currency {
+            font-size: 18px;
+            vertical-align: super;
+        }
+
+        /* Play and Win Badge - PROMINENT */
+        .play-win-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: 3px solid #ffd700;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            }
+            50% {
+                transform: scale(1.02);
+                box-shadow: 0 12px 30px rgba(102, 126, 234, 0.5);
+            }
+        }
+
+        .play-win-badge h3 {
+            color: #ffd700;
+            font-size: 22px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .play-win-badge p {
+            color: white;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .play-here-button {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #333;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .play-here-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Regular Buttons */
+        .button-section {
+            margin: 20px 0;
+        }
+
+        .add-to-cart-btn, .buy-now-btn {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .add-to-cart-btn {
+            background: #FFD814;
+            color: #0F1111;
+        }
+
+        .add-to-cart-btn:hover {
+            background: #F7CA00;
+        }
+
+        .buy-now-btn {
+            background: #FFA41C;
+            color: #0F1111;
+        }
+
+        .buy-now-btn:hover {
+            background: #FA8900;
+        }
+
+        /* Product Details */
+        .product-details {
+            margin-top: 30px;
+        }
+
+        .product-details h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #0F1111;
+        }
+
+        .details-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .details-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+        }
+
+        .details-list li strong {
+            min-width: 150px;
+            color: #565959;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .product-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Amazon-style Header -->
+    <div class="header">
+        <div class="logo">amazon.de</div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search Amazon.de">
+        </div>
+    </div>
+
+    <!-- Product Detail Container -->
+    <div class="container">
+        <div class="product-layout">
+            <!-- Left: Product Image -->
+            <div class="product-image-section">
+                <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&h=400&fit=crop" 
+                     alt="Casual Autumn Outfit" 
+                     class="product-image">
+            </div>
+
+            <!-- Right: Product Info -->
+            <div class="product-info-section">
+                <h1>Sleeve Casual Autumn Fashion Clothing</h1>
+                
+                <div class="rating">
+                    <span class="stars">★★★★☆</span>
+                    <span>4.2 out of 5 stars</span>
+                    <span>(1,234 ratings)</span>
+                </div>
+
+                <div class="price-section">
+                    <span class="price-currency">€</span>
+                    <span class="price">8.21</span>
+                </div>
+
+                <!-- PLAY AND WIN BADGE - PROMINENT -->
+                <div class="play-win-badge">
+                    <h3>Play Your Chance to Win Discounts! 🎯</h3>
+                    <p>Guess the bundle price and unlock up to 20% OFF!</p>
+                    <button class="play-here-button" onclick="window.location.href='index.html'">
+                        👉 Play Here
+                    </button>
+                </div>
+
+                <!-- Regular Purchase Options -->
+                <div class="button-section">
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                    <button class="buy-now-btn">Buy Now</button>
+                </div>
+
+                <div style="margin-top: 20px; padding: 15px; background: #f0f2f2; border-radius: 8px;">
+                    <p style="margin: 5px 0;"><strong>FREE delivery</strong> on orders over €29</p>
+                    <p style="margin: 5px 0; color: #007600;"><strong>In Stock</strong></p>
+                    <p style="margin: 5px 0;">Ships from and sold by Amazon.de</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Details Section -->
+        <div class="product-details">
+            <h2>Product Details</h2>
+            <ul class="details-list">
+                <li>
+                    <strong>Material:</strong>
+                    <span>Cotton Blend</span>
+                </li>
+                <li>
+                    <strong>Style:</strong>
+                    <span>Casual, Autumn Fashion</span>
+                </li>
+                <li>
+                    <strong>Sleeve Type:</strong>
+                    <span>Long Sleeve</span>
+                </li>
+                <li>
+                    <strong>Care Instructions:</strong>
+                    <span>Machine Wash</span>
+                </li>
+                <li>
+                    <strong>Available Sizes:</strong>
+                    <span>S, M, L, XL, XXL</span>
+                </li>
+                <li>
+                    <strong>Color Options:</strong>
+                    <span>Black, Grey, Navy, Beige</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Product Description -->
+        <div class="product-details" style="margin-top: 30px;">
+            <h2>About this item</h2>
+            <ul style="padding-left: 20px; line-height: 1.8;">
+                <li>Comfortable and stylish casual autumn outfit</li>
+                <li>Perfect for everyday wear and lounging</li>
+                <li>Soft, breathable fabric for all-day comfort</li>
+                <li>Easy to match with various accessories</li>
+                <li>Ideal for transitional weather</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Optional: Add click tracking or analytics
+        document.querySelector('.play-here-button').addEventListener('click', function() {
+            console.log('User clicked Play Here button from product detail page');
+        });
+    </script>
+</body>
+</html>
