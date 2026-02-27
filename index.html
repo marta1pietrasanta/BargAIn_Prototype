@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BargAIn - Bid Smart, Save Big</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Home Page Banner -->
+        <section id="home-page" class="page active">
+            <div class="banner-container">
+                <div class="banner-content">
+                    <div class="emoji-money">💰</div>
+                    <h1>Bid Smart, Save Big 🎯</h1>
+                    <h2>YOU SET THE PRICE!</h2>
+                    <div class="features">
+                        <p>✅ Discount applied at checkout</p>
+                        <p>⏰ Limited time only</p>
+                        <p>🛒 Up to 3 items per customer</p>
+                    </div>
+                    <button class="cta-button" onclick="showInstructions()">
+                        👉 Click Here
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Instructions Page -->
+        <section id="instructions-page" class="page">
+            <div class="game-container">
+                <div class="game-header">
+                    <h2>🛍️ Ready to Play?</h2>
+                </div>
+                <div class="instructions-content">
+                    <p class="intro">First, choose 3 products.</p>
+                    <p class="intro">Then, try to guess the total price of the products.</p>
+                    <p class="intro">Based on how close your guess is, you will unlock tiered discounts on the selected products:</p>
+                    
+                    <div class="discount-tiers">
+                        <div class="tier gold">✅ Guess within 5% of the actual price = get 20% off</div>
+                        <div class="tier silver">✅ Guess within 10% of the actual price = get 15% off</div>
+                        <div class="tier bronze">✅ Guess within or above 15% of the actual price = get 10% off</div>
+                    </div>
+
+                    <p class="note">Click on 'Play Now' to start the game. If you win, you can decide whether to add the products to cart or exit the game without buying.</p>
+                    
+                    <p class="note">You can exit the game at anytime by clicking on 'no thanks' buttons or by closing this interface. Once you exit the game, you will not be able to play again. You will be able to purchase the won items at your price until the end of the promotion period, by proceeding to checkout.</p>
+                    
+                    <div class="button-group">
+                        <button class="play-button" onclick="showThemeSelection()">🎮 Play Now</button>
+                        <button class="no-thanks-button" onclick="exitGame()">No Thanks</button>
+                    </div>
+                    
+                    <div class="footer-links">
+                        <a href="#terms">Terms and Conditions</a> • <a href="#howto">How to Play</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Theme Selection -->
+        <section id="theme-selection-page" class="page">
+            <div class="game-container">
+                <div class="game-header">
+                    <h2>Choose Your Theme</h2>
+                </div>
+                <div class="theme-grid">
+                    <div class="theme-card" onclick="selectTheme('organization')">
+                        <div class="theme-icon">📦</div>
+                        <h3>Organize Your Space</h3>
+                        <p>Storage & Organization</p>
+                    </div>
+                    <div class="theme-card" onclick="selectTheme('fitness')">
+                        <div class="theme-icon">💪</div>
+                        <h3>Assemble Your Fitness Trio</h3>
+                        <p>Health & Sports</p>
+                    </div>
+                    <div class="theme-card" onclick="selectTheme('home')">
+                        <div class="theme-icon">🏠</div>
+                        <h3>Plan Your Home Outfit</h3>
+                        <p>Loungewear & Comfort</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Selection -->
+        <section id="product-selection-page" class="page">
+            <div class="game-container">
+                <div class="game-header">
+                    <h2>🛍️ Select 3 Products (<span id="selection-count">0</span>/3)</h2>
+                    <p class="subtitle">1. Scroll and choose 3 products.<br>2. Selected items can't be changed once confirmed.</p>
+                </div>
+                <div id="product-list" class="product-list"></div>
+                <div class="button-group">
+                    <button class="confirm-button" id="confirm-selection" onclick="confirmSelection()" disabled>
+                        🛒 Confirm Selection (0/3)
+                    </button>
+                    <button class="no-thanks-button" onclick="exitGame()">No Thanks</button>
+                </div>
+                <div class="footer-links">
+                    <a href="#terms">Terms and Conditions</a> • <a href="#howto">How to Play</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Price Guessing -->
+        <section id="price-guess-page" class="page">
+            <div class="game-container">
+                <div class="game-header">
+                    <h2>💰 Scroll to Set Your Price</h2>
+                    <p class="subtitle">Guess the total price for your items!</p>
+                </div>
+                <div id="selected-products" class="selected-products"></div>
+                <div class="price-input-container">
+                    <input type="range" id="price-slider" min="5" max="100" value="20" step="0.5">
+                    <div class="price-display">
+                        <span id="guess-price">20.00</span> €
+                    </div>
+                </div>
+                <button class="play-button" onclick="submitGuess()">🎮 Play</button>
+                <div class="footer-links">
+                    <a href="#terms">Terms and Conditions</a> • <a href="#howto">How to Play</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results -->
+        <section id="results-page" class="page">
+            <div class="game-container">
+                <div class="game-header">
+                    <h2>😊 Your Results</h2>
+                    <p class="subtitle">Here's how you did!</p>
+                </div>
+                <div class="results-summary">
+                    <div class="result-item">
+                        <strong>Your Guess:</strong> <span id="result-guess">€0.00</span>
+                    </div>
+                    <div class="result-item">
+                        <strong>Actual Price:</strong> <span id="result-actual">€0.00</span>
+                    </div>
+                    <div class="result-badge" id="result-badge">Within 10%!</div>
+                </div>
+                <div id="results-products" class="results-products"></div>
+                <div class="checkout-section">
+                    <button class="checkout-button" onclick="proceedToCheckout()">
+                        🛒 Proceed to Checkout <span id="final-price">€0.00</span>
+                    </button>
+                </div>
+                <div class="share-section">
+                    <h3>Share Your Win!</h3>
+                    <div class="share-buttons">
+                        <button class="share-btn" onclick="shareSuccess()">📱 Share Success</button>
+                        <button class="share-btn" onclick="challengeFriends()">🎯 Challenge Friends</button>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <a href="#terms">Terms and Conditions</a> • <a href="#howto">How to Play</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
